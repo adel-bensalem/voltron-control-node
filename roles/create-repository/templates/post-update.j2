@@ -1,6 +1,6 @@
 #!/bin/sh
-SERVER_PATH={{ servers_path }}/{{ name }}.git
-REPOSITORY_PATH={{ repositories_path }}/{{ name }}
+SERVER_PATH={{ servers_path }}/{{ application_name }}.git
+REPOSITORY_PATH={{ repositories_path }}/{{ application_name }}
 
 [ -d "$REPOSITORY_PATH" ] && sudo rm -rf "$REPOSITORY_PATH"
 git clone $SERVER_PATH "$REPOSITORY_PATH"
