@@ -3,9 +3,9 @@
     path: "{{ servers_path }}/{{ application_name }}.git"
   register: repository
 
-- name: Create repository directory
+- name: Remove repository directory
   shell: rm -rf "{{ servers_path }}/{{ application_name }}.git"
-  when: repository.stat.exists == false
+  when: repository.stat.exists
 
 - name: Clone repository
   shell: git clone "{{ servers_path }}/{{ application_name }}.git" "{{ repositories_path }}/{{ application_name }}"
