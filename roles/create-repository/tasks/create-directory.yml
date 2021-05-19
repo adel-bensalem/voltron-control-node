@@ -1,9 +1,9 @@
 
-- name: Check id repository exists.
+- name: Check if repository exists.
   stat:
     path: "{{ servers_path }}/{{ application_name }}.git"
   register: repository
 
 - name: Create repository directory
   shell: mkdir "{{ servers_path }}/{{ application_name }}.git"
-  when: repository.stat.exists
+  when: !repository.stat.exists
