@@ -1,10 +1,10 @@
 - name: Check if repository exists.
   stat:
-    path: "{{ servers_path }}/{{ application_name }}.git"
+    path: "{{ repositories_path }}/{{ application_name }}"
   register: repository
 
 - name: Remove repository directory
-  shell: rm -rf "{{ servers_path }}/{{ application_name }}.git"
+  shell: rm -rf "{{ repositories_path }}/{{ application_name }}"
   when: repository.stat.exists
 
 - name: Clone repository
