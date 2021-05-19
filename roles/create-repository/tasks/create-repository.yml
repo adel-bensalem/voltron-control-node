@@ -5,10 +5,10 @@
     creates: "{{ servers_path }}/{{ application_name }}.git/HEAD"
 
 - name: Set permissions
-    file:
-      path: "{{ servers_path }}/{{ application_name }}.git"
-      state: directory
-      mode: 0755
-      owner: git
-      group: git
-      recurse: True
+  file:
+    path: "{{ servers_path }}/{{ application_name }}.git"
+    state: directory
+    mode: 0755
+    owner: git
+    group: git
+    recurse: True
