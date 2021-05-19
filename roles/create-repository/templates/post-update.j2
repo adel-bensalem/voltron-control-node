@@ -1,11 +1,2 @@
 #!/bin/sh
-ansible-playbook
-SERVER_PATH={{ servers_path }}/{{ application_name }}.git
-REPOSITORY_PATH={{ repositories_path }}/{{ application_name }}
-
-[ -d "$REPOSITORY_PATH" ] && sudo rm -rf "$REPOSITORY_PATH"
-git clone $SERVER_PATH "$REPOSITORY_PATH"
-
-sudo docker container stop web
-sudo docker container rm web
-cd "$REPOSITORY_PATH" && sudo docker build -t web:latest . && sudo docker run -d -p 80:80 --name web web
+ansible-playbook -i /etc/ansible/voltron-control-node/inventory -e "application_name={{ application_name }}" /etc/ansible/voltron-control-node/create-application.yml
