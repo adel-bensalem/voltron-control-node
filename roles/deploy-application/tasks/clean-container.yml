@@ -1,0 +1,5 @@
+- name: Stop container
+  shell: sudo docker container stop "{{ container_name }}"
+
+- name: Remove container
+  shell: sudo docker container rm "{{ container_name }}"

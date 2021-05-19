@@ -1,0 +1,5 @@
+- name: Build image
+  shell: sudo docker build -t "{{ image_name }}:latest" "{{ repositories_path }}/{{ application_name }}"
+
+- name: Run container
+  shell: sudo docker run -d -p 80:80 --name "{{ container_name }}" "{{ image_name }}:latest"

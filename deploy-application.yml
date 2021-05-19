@@ -1,0 +1,6 @@
+- name: Deploy application
+  hosts: web-server
+  remote_user: git
+  become: yes
+  roles:
+    - deploy-application
