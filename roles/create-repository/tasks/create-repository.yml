@@ -1,3 +1,5 @@
 
 - name: Create repository
   command: git init --bare "{{ servers_path }}/{{ application_name }}.git"
+  args:
+    creates: "{{ servers_path }}/{{ application_name }}.git/HEAD"
