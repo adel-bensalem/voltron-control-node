@@ -1,0 +1,9 @@
+
+- name: Create directory
+  import_tasks: create-directory.yml
+
+- name: Create repository
+  import_tasks: create-repository.yml
+
+- name: Replace hooks
+  import_tasks: replace-hooks.yml

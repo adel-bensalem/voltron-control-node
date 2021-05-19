@@ -1,0 +1,6 @@
+- name: Create application
+  hosts: git
+  remote_user: git
+  become: yes
+  roles:
+    - create-repository

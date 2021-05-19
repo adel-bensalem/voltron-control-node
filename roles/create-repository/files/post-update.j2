@@ -1,0 +1,10 @@
+#!/bin/sh
+SERVER_PATH={{ servers_path }}/{{ name }}.git
+REPOSITORY_PATH={{ repositories_path }}/{{ name }}
+
+[ -d "$REPOSITORY_PATH" ] && sudo rm -rf "$REPOSITORY_PATH"
+git clone $SERVER_PATH "$REPOSITORY_PATH"
+
+sudo docker container stop web
+sudo docker container rm web
+cd "$REPOSITORY_PATH" && sudo docker build -t web:latest . && sudo docker run -d -p 80:80 --name web web

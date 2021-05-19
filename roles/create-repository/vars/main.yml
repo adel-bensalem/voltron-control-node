@@ -1,0 +1,2 @@
+servers_path: "/srv/git"
+repositories_path: "/tmp/git"
