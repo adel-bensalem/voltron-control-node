@@ -6,4 +6,4 @@
 
 - name: Create repository directory
   shell: mkdir "{{ servers_path }}/{{ application_name }}.git"
-  when: !repository.stat.exists
+  when: repository.stat.exists == false
