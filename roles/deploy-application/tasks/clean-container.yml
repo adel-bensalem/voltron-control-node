@@ -1,5 +1,5 @@
 - name: Stop container
-  shell: sudo docker container stop "{{ application_name }}"
+  shell: sudo docker container stop "{{ application_name }}" || true
 
 - name: Remove container
-  shell: sudo docker container rm "{{ application_name }}"
+  shell: sudo docker container rm "{{ application_name }}" || true

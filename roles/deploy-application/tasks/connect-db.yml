@@ -1,0 +1,11 @@
+- name: Start service mongod
+  ansible.builtin.service:
+    name: mongod
+    state: started
+
+- name: Create database user
+  community.mongodb.mongodb_user:
+    database: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    state: present

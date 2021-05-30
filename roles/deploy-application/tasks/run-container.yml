@@ -18,3 +18,11 @@
 
 - name: Run container
   shell: sudo docker run -d -p "{{ port.stdout }}:80" --name "{{ application_name }}" "{{ application_name }}:latest"
+
+- name: Save port
+  community.mongodb.mongodb_shell:
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    login_database: "{{ db_name }}"
+    db: "{{ db_name }}"
+    eval: "db.ports.replaceOne({ name: { $eq: '{{ application_name }}' } }, { name: '{{ application_name }}', port: '{{ port.stdout }}' }, {upsert: true})"
