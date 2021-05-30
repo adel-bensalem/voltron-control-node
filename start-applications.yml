@@ -1,0 +1,9 @@
+- name: Start applications
+  hosts: webservers
+  remote_user: git
+  become: yes
+  with_items: applications
+  include_role:
+    name: deploy-application
+  vars:
+    application_name: "{{ item }}"
