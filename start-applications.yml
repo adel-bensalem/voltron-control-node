@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: Start application
-      with_items: applications
+      with_items: "{{ applications }}"
       include_role:
         name: deploy-application
       vars:
