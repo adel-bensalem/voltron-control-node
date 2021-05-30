@@ -1,4 +1,5 @@
 #!/bin/sh
 branch=$(git rev-parse --symbolic --abbrev-ref $1)
+application_name={{ application_name }}
 
-[ "$branch" = "master" ] && ansible-playbook -i /etc/ansible/voltron-control-node/inventory -e "application_name={{ application_name }}" /etc/ansible/voltron-control-node/deploy-application.yml
+[ "$branch" = "master" ] && ansible-playbook -i /etc/ansible/voltron-control-node/inventory -e "application_name=$application_name" /etc/ansible/voltron-control-node/deploy-application.yml
