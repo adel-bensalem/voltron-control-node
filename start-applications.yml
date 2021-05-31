@@ -16,9 +16,9 @@
   become: yes
   tasks:
     - name: Save application location
-      with_items: "{{ applications }}"
+      with_dict: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first) }}"
       include_role:
         name: save-application-location
       vars:
-        application_name: "{{ item }}"
-        application_port: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[item] }}"
+        application_name: "{{ item.key }}"
+        application_port: "{{ item.value }}"
