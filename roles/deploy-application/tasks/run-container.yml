@@ -13,10 +13,10 @@
     executable: /bin/bash
   register: port
 
-- name: Check Dockerfile exists
-    stat:
-      path: "{{ repositories_path }}/{{ application_name }}/Dockerfile"
-    register: stat_result
+- name: Check if Dockerfile exists
+  stat:
+    path: "{{ repositories_path }}/{{ application_name }}/Dockerfile"
+  register: stat_result
 
 - name: Build image
   shell: sudo docker build -t "{{ application_name }}:latest" "{{ repositories_path }}/{{ application_name }}"
