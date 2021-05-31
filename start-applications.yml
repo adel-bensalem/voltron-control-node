@@ -21,4 +21,4 @@
         name: save-application-location
       vars:
         application_name: "{{ item }}"
-        application_port: "{{ portMap[item] }}"
+        application_port: "{{ (groups['webservers'] | map('extract', hostvars, 'portMap') | list | first)[item] }}"
