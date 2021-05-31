@@ -9,9 +9,8 @@
   hosts: databases
   remote_user: john
   become: yes
-  with_dict: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first) }}"
   roles:
-    name: save-application-location
+    - role: save-application-location
+      when: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] }} is defined"
   vars:
-    application_name: "{{ item.key }}"
-    application_port: "{{ item.value }}"
+    application_port: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] }}"
