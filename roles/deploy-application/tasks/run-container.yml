@@ -18,5 +18,7 @@
 
 - name: Run container
   shell: sudo docker run -d -p "{{ port.stdout }}:80" --name "{{ application_name }}" "{{ application_name }}:latest"
+
+- name: Save port
   set_fact:
     portMap: "{{ portMap | default({}) | combine ({ application_name : port.stdout }) }}"
