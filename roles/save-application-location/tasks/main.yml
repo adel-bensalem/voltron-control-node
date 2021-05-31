@@ -1,0 +1,8 @@
+-  name: Display the Dictionary
+   debug: var=portMap
+
+- name: Connect to database
+  import_tasks: connect-db.yml
+
+- name: Save location
+  import_tasks: save-location.yml

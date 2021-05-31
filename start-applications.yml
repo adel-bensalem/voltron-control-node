@@ -9,3 +9,16 @@
         name: deploy-application
       vars:
         application_name: "{{ item }}"
+
+- name: Save applications location
+  hosts: databases
+  remote_user: john
+  become: yes
+  tasks:
+    - name: Save application location
+      with_items: "{{ applications }}"
+      include_role:
+        name: save-application-location
+      vars:
+        application_name: "{{ item }}"
+        application_port: "{{ portMap[item] }}"

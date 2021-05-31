@@ -1,0 +1,7 @@
+- name: Save port
+  community.mongodb.mongodb_shell:
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    login_database: "{{ db_name }}"
+    db: "{{ db_name }}"
+    eval: "db.ports.replaceOne({ name: { $eq: '{{ application_name }}' } }, { name: '{{ application_name }}', port: '{{ application_port }}' }, {upsert: true})"
