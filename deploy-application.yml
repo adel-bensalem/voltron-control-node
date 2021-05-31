@@ -4,3 +4,12 @@
   become: yes
   roles:
     - deploy-application
+
+- name: Save application location
+  hosts: databases
+  remote_user: john
+  become: yes
+  roles:
+    - save-application-location
+  vars:
+    application_port: "{{ portMap[application_name] }}"
