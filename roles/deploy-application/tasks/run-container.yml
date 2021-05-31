@@ -28,4 +28,4 @@
 
 - name: Save port
   set_fact:
-    portMap: "{{ portMap | default({}) | combine ({ application_name : port.stdout }) }}"
+    port_map: "{{ port_map | default({}) | combine ({ application_name : port.stdout }) }}"

@@ -12,4 +12,4 @@
   roles:
     - save-application-location
   vars:
-    application_port: "{{ portMap[application_name] }}"
+    application_port: "{{ port_map[application_name] }}"
