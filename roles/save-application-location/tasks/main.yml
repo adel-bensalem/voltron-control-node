@@ -1,5 +1,5 @@
--  name: Display the Dictionary
-   debug: var=portMap
+- name: Install dependencies
+  import_tasks: install-dependencies.yml
 
 - name: Connect to database
   import_tasks: connect-db.yml
