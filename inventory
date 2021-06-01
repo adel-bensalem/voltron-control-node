@@ -1,8 +1,11 @@
 [git]
-127.0.0.1
+git.voltronlabs.com
 
 [webservers]
-127.0.0.1
+www.voltronlabs.com
 
 [databases]
-192.168.0.42
+database.voltronlabs.com
+
+[repository]
+repository.voltronlabs.com
