@@ -1,13 +1,13 @@
 - name: Deploy application
   hosts: webservers
-  remote_user: git
+  remote_user: web
   become: yes
   roles:
     - deploy-application
 
 - name: Save application location
   hosts: databases
-  remote_user: john
+  remote_user: admin
   become: yes
   roles:
     - role: save-application-location

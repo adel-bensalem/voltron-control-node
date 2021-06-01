@@ -1,6 +1,6 @@
 - name: Start applications
   hosts: webservers
-  remote_user: git
+  remote_user: web
   become: yes
   tasks:
     - name: Start application
@@ -12,7 +12,7 @@
 
 - name: Save applications location
   hosts: databases
-  remote_user: john
+  remote_user: admin
   become: yes
   tasks:
     - name: Save application location
