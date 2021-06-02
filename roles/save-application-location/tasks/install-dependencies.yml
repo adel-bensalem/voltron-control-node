@@ -1,14 +1,2 @@
-- name: Install python tools
-  apt: name={{ dep }} state=latest
-  with_items:
-    - libpq-dev
-    - libxml2-dev
-    - libxslt1-dev
-    - python-dev
-    - python-setuptools
-    - build-essential
-  loop_control:
-    loop_var: dep
-
 - name: Install pymongo
-  pip: name=pymongo state=latest
+  pip: executable=pip3 name=pymongo state=latest

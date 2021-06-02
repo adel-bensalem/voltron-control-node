@@ -1,7 +1,6 @@
 - name: Deploy application
   hosts: webservers
   remote_user: web
-  become: yes
   roles:
     - deploy-application
 
@@ -11,6 +10,6 @@
   become: yes
   roles:
     - role: save-application-location
-      when: (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] }} is defined
+      when: (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] is defined
   vars:
     application_port: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] }}"

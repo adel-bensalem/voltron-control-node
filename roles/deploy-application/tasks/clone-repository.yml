@@ -4,8 +4,8 @@
   register: repository
 
 - name: Remove repository directory
-  shell: rm -rf "{{ repositories_path }}/{{ application_name }}"
+  shell: rm -rf {{ repositories_path }}/{{ application_name }}
   when: repository.stat.exists
 
 - name: Clone repository
-  shell: git clone "git@git.voltronlabs.com:{{ servers_path }}/{{ application_name }}.git" "{{ repositories_path }}/{{ application_name }}"
+  shell: git clone git@git.voltronlabs.com:{{ servers_path }}/{{ application_name }}.git {{ repositories_path }}/{{ application_name }}
