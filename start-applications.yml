@@ -1,7 +1,6 @@
 - name: Start applications
   hosts: webservers
   remote_user: web
-  become: yes
   tasks:
     - name: Start application
       with_items: "{{ applications }}"
@@ -13,7 +12,6 @@
 - name: Save applications location
   hosts: databases
   remote_user: admin
-  become: yes
   tasks:
     - name: Save application location
       with_dict: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first) }}"
