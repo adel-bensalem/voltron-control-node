@@ -7,7 +7,6 @@
 - name: Save application location
   hosts: databases
   remote_user: admin
-  become: yes
   roles:
     - role: save-application-location
       when: (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] is defined
