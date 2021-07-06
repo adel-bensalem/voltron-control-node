@@ -2,7 +2,7 @@
   shell: |
     PORT=5000
     while true; do
-      /usr/sbin/ss -tulpen | grep ":${PORT}" &> /dev/null
+      ss -tulpen | grep ":${PORT}" &> /dev/null
       if [[ "$?" == "1" ]]; then
         echo "${PORT}"
         exit
