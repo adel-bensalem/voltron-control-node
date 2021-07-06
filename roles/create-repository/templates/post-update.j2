@@ -1,9 +1,8 @@
 #!/bin/sh
-branch=$(git rev-parse --symbolic --abbrev-ref $1)
 application_name={{ application_name }}
 playbook_location={{ ansible_location }}
 db_name={{ db_name }}
 db_user={{ db_user }}
 db_password={{ db_password }}
 
-[ "$branch" = "master" ] && ansible-playbook -i "$playbook_location/inventory" -e "application_name=$application_name db_name=$db_name db_user=$db_user db_password=$db_password" "$playbook_location/deploy-application.yml"
+ansible-playbook -i "$playbook_location/inventory" -e "application_name=$application_name db_name=$db_name db_user=$db_user db_password=$db_password" "$playbook_location/deploy-application.yml"
