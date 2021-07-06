@@ -1,7 +1,7 @@
 
 - name: Replace post update git hook
   ansible.builtin.template:
-    src: update.j2
+    src: post-update.j2
     dest: "{{ servers_path }}/{{ application_name }}.git/hooks/post-update"
     owner: "git"
     mode: "+x"
