@@ -1,9 +1,12 @@
-- name: Save port
+- name: Retrieve tag
   community.mongodb.mongodb_shell:
     login_user: "{{ db_user }}"
     login_password: "{{ db_password }}"
     login_database: "{{ db_name }}"
     db: "{{ db_name }}"
-    eval: "db.deployments.findOne({ 'application.name': { $eq: '{{ application_name }}' } })"
+    eval: "db.deployments.findOne({ 'application.name': { $eq: '{{ application_name }}' } }).limit(1).sort({$natural:-1})"
+  register: res
+
+- name: Save deployment
   set_fact:
-    deployment: "{{ out | from_json }}"
+    deployment: "{{ res | from_json }}"
