@@ -1,0 +1,9 @@
+- name: Save port
+  community.mongodb.mongodb_shell:
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    login_database: "{{ db_name }}"
+    db: "{{ db_name }}"
+    eval: "db.deployments.findOne({ 'application.name': { $eq: '{{ application_name }}' } })"
+  set_fact:
+    deployment: "{{ out | from_json }}"
