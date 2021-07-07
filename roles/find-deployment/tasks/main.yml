@@ -1,0 +1,9 @@
+
+- name: Install dependencies
+  import_tasks: install-dependencies.yml
+
+- name: Connect to database
+  import_tasks: connect-db.yml
+
+- name: Retrieve tag
+  import_tasks: retrieve-tag.yml

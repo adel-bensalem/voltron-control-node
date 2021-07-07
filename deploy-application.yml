@@ -1,8 +1,16 @@
+- name: Find application deployment tag
+  hosts: databases
+  remote_user: admin
+  roles:
+    - find-deployment
+
 - name: Deploy application
   hosts: webservers
   remote_user: web
   roles:
     - deploy-application
+  vars:
+    tag: "{{ (groups['databases'] | map('extract', hostvars, 'deployment') | list | first)['tag'] }}"
 
 - name: Save application location
   hosts: databases
