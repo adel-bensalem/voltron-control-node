@@ -19,11 +19,11 @@
   register: stat_result
 
 - name: Build image
-  shell: docker build -t "{{ application_name }}:latest" {{ repositories_path }}/{{ application_name }}
+  shell: sudo docker build -t {{ application_name }}:latest {{ repositories_path }}/{{ application_name }}
   when: stat_result.stat.exists
 
 - name: Run container
-  shell: docker run -d -p "{{ port.stdout }}:80" --name "{{ application_name }}" "{{ application_name }}:latest"
+  shell: sudo docker run -d -p "{{ port.stdout }}:80" --name "{{ application_name }}" "{{ application_name }}:latest"
   when: stat_result.stat.exists
 
 - name: Save port
