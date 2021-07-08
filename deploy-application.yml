@@ -10,7 +10,7 @@
   roles:
     - deploy-application
   vars:
-    tag: "{{ (groups['databases'] | map('extract', hostvars, 'deployment') | list | first)['tag'] }}"
+    tag: "{{ (groups['databases'] | map('extract', hostvars, 'deployment_tag') | list | first) }}"
 
 - name: Save application location
   hosts: databases

@@ -4,9 +4,10 @@
     login_password: "{{ db_password }}"
     login_database: "{{ db_name }}"
     db: "{{ db_name }}"
-    eval: "db.deployments.findOne({ 'application.name': { $eq: '{{ application_name }}' } }).limit(1).sort({$natural:-1})"
+    eval: "db.deployments.find({ 'application.name': { $eq: '{{ application_name }}' } }).limit(1).sort({$natural:-1})"
+    debug: yes
   register: res
 
 - name: Save deployment
   set_fact:
-    deployment: "{{ res | from_json }}"
+    deployment_tag: "{{ res.out | regex_search('\"tag\" ?: ?\"([a-zA-Z0-9-]+)\"', '\\1') | first }}"
