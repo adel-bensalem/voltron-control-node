@@ -1,4 +1,0 @@
-- name: Start service mongod
-  ansible.builtin.service:
-    name: mongod
-    state: started

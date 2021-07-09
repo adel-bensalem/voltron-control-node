@@ -5,14 +5,5 @@
 - name: Clean container
   import_tasks: clean-container.yml
 
-- name: Install dependencies
-  import_tasks: install-dependencies.yml
-
-- name: Connect to database
-  import_tasks: connect-db.yml
-
-- name: Save location
-  import_tasks: retrieve-tag.yml
-
 - name: Run container
   import_tasks: run-container.yml

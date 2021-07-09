@@ -1,2 +1,0 @@
-- name: Install pymongo
-  pip: executable=pip3 name=pymongo state=latest
