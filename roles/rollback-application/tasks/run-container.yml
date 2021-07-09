@@ -16,9 +16,7 @@
 
 - name: Run container
   shell: docker run -d -p "{{ port.stdout }}:80" --name "{{ application_name }}" "{{ application_name }}:{{ tag }}"
-  when: stat_result.stat.exists
 
 - name: Save port
   set_fact:
     port_map: "{{ port_map | default({}) | combine ({ application_name : port.stdout }) }}"
-  when: stat_result.stat.exists
