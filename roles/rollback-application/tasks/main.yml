@@ -1,0 +1,5 @@
+- name: Clean container
+  import_tasks: clean-container.yml
+
+- name: Run container
+  import_tasks: run-container.yml

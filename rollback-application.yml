@@ -1,14 +1,8 @@
-- name: Find application deployment tag
-  hosts: databases
-  remote_user: admin
-  roles:
-    - find-deployment
-
-- name: Deploy application
+- name: Rollback application
   hosts: webservers
   remote_user: web
   roles:
-    - deploy-application
+    - rollback-application
   vars:
     tag: "{{ (groups['databases'] | map('extract', hostvars, 'deployment_tag') | list | first) }}"
 
