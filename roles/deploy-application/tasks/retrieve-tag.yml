@@ -4,7 +4,7 @@
     login_password: "{{ db_password }}"
     login_database: "{{ db_name }}"
     db: "{{ db_name }}"
-    eval: "db.deployments.findOne({ 'application.name': { $eq: '{{ application_name }}' } }).limit(1).sort({$natural:-1})"
+    eval: "db.deployments.find({ 'application.name': { $eq: '{{ application_name }}' } }).limit(1).sort({$natural:-1})"
   register: res
 
 - name: Save deployment
