@@ -1,0 +1,16 @@
+- name: Rollback application
+  hosts: webservers
+  remote_user: web
+  roles:
+    - rollback-application
+  vars:
+    tag: "{{ (groups['databases'] | map('extract', hostvars, 'deployment_tag') | list | first) }}"
+
+- name: Save application location
+  hosts: databases
+  remote_user: admin
+  roles:
+    - role: save-application-location
+      when: (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] is defined
+  vars:
+    application_port: "{{ (groups['webservers'] | map('extract', hostvars, 'port_map') | list | first)[application_name] }}"
